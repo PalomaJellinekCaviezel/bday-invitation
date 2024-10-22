@@ -1,11 +1,14 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Invitation from "./pages/Invitation";
+import BirthdayInvitation from "./pages/BirthdayInvitation";
+import BirthdayForm from "./pages/BirthdayForm";
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Invitation />} />
+        <Route path="/form-data-bday" element={<BirthdayForm />} />
+        <Route path="/invitation/:id" element={<BirthdayInvitation />} />
       </Routes>
     </BrowserRouter>
   );
