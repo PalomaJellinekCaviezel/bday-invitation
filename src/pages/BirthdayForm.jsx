@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ref, push } from "firebase/database";
 import { db } from "../firebaseConfig";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import AdminLogin from "../components/AdminLogin";
+import "../admin.css";
+import { useAuth } from "../context/AuthContext";
 
 const BirthdayForm = () => {
   const [formData, setFormData] = useState({
@@ -15,28 +18,8 @@ const BirthdayForm = () => {
     phone: " ",
   });
 
-  const location = useLocation(); // Usar location correctamente
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate(); // Para redirigir a la vista de la invitación
-
-  // Definir la clave secreta correcta
-  const claveCorrecta = "form-data-bday"; // Cambia esto a tu clave deseada
-
-  // Obtener la clave de la URL
-  const queryParams = new URLSearchParams(location.search);
-  const claveSecreta = queryParams.get("clave_secreta");
-
-  // Estado para manejar si la clave es válida o no
-  const [claveValida, setClaveValida] = useState(false);
-  //form-data-bday?clave_secreta=form-data-bday
-
-  useEffect(() => {
-    // Si la clave no es correcta, redirigir al inicio o mostrar un mensaje
-    if (claveSecreta === claveCorrecta) {
-      setClaveValida(true);
-    } else {
-      navigate("/"); // Redirige a otra página si la clave es incorrecta
-    }
-  }, [claveSecreta, navigate]);
 
   // Actualizar el estado con los datos del formulario
   const handleChange = (e) => {
@@ -66,79 +49,96 @@ const BirthdayForm = () => {
   };
 
   return (
-    <>
-      {claveValida ? (
+    <div className="bday-form">
+      {!isAuthenticated ? (
+        <AdminLogin />
+      ) : (
         <form onSubmit={handleSubmit}>
-          {/* Aquí va tu formulario */}
           <h2>Crear invitación de cumpleaños</h2>
+
           <div>
-            <label>Nombre del cumpleañero:</label>
+            <label htmlFor="name">Nombre del cumpleañero:</label>
             <input
               type="text"
+              id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
             />
           </div>
+
           <div>
-            <label>Fecha del cumpleaños:</label>
+            <label htmlFor="date">Fecha del cumpleaños:</label>
             <input
               type="date"
+              id="date"
               name="date"
               value={formData.date}
               onChange={handleChange}
             />
           </div>
+
           <div>
-            <label>Edad que cumple:</label>
+            <label htmlFor="age">Edad que cumple:</label>
             <input
               type="number"
+              id="age"
               name="age"
               value={formData.age}
               onChange={handleChange}
             />
           </div>
+
           <div>
-            <label>Lugar del festejo:</label>
+            <label htmlFor="place">Lugar del festejo:</label>
             <input
               type="text"
+              id="place"
               name="place"
               value={formData.place}
               onChange={handleChange}
             />
           </div>
+
           <div>
-            <label>Dirección real del lugar:</label>
+            <label htmlFor="address">Dirección real del lugar:</label>
             <input
               type="text"
+              id="address"
               name="address"
               value={formData.address}
               onChange={handleChange}
               required
             />
           </div>
+
           <div>
-            <label>Horario de inicio:</label>
+            <label htmlFor="startTime">Horario de inicio:</label>
             <input
               type="time"
+              id="startTime"
               name="startTime"
               value={formData.startTime}
               onChange={handleChange}
             />
           </div>
+
           <div>
-            <label>Horario de fin:</label>
+            <label htmlFor="endTime">Horario de fin:</label>
             <input
               type="time"
+              id="endTime"
               name="endTime"
               value={formData.endTime}
               onChange={handleChange}
             />
           </div>
+
           <div>
-            <label>Telefono de confirmación:</label>
+            <label htmlFor="phone">Teléfono de confirmación:</label>
             <input
               type="tel"
+              id="phone"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
@@ -148,10 +148,8 @@ const BirthdayForm = () => {
 
           <button type="submit">Crear invitación</button>
         </form>
-      ) : (
-        <p>No tienes acceso a este formulario.</p>
       )}
-    </>
+    </div>
   );
 };
 

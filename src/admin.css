@@ -1,0 +1,63 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.bday-form, .admin-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #fafafa;
+}
+
+form {
+    background-color: #fff;
+    padding: 1.2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    font-size: small;
+    max-width: 400px; /* Limita el ancho del formulario */
+}
+
+h2{
+    margin: 0.5rem;
+    text-align: center;
+}
+
+input { 
+    flex: 1;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin: 5px;
+}
+
+label {
+    flex: 0 0 120px; /* Fija el ancho del label */
+    text-align: right; /* Alinea el texto del label a la derecha */
+    padding-right: 10px; /* Espacio entre el label y el input */
+  }
+
+.bday-form button, .admin-login button{
+    width: 100%;
+    margin: 1rem auto 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #0056b3;
+
+    }
+}
+
+form div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
