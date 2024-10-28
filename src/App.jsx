@@ -15,7 +15,7 @@ function App() {
 
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin-form" element={<BirthdayForm />} />
-          <Route path="/invitations/:id" element={<BirthdayInvitation />} />
+          <Route path="/invitation/:id" element={<BirthdayInvitation />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
