@@ -41,7 +41,7 @@ const BirthdayForm = () => {
       .then((snapshot) => {
         const id = snapshot.key; // Obtiene el ID generado por Firebase
         alert("Invitación creada correctamente");
-        navigate(`/invitation/${id}`); // Redirige a la página de la invitación con el ID
+        navigate(`/invitations/${id}`); // Redirige a la página de la invitación con el ID
       })
       .catch((error) => {
         alert("Error al crear la invitación: ", error);
