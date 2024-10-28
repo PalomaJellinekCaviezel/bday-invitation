@@ -4,14 +4,17 @@ import BirthdayInvitation from "./pages/BirthdayInvitation";
 import AdminLogin from "./components/AdminLogin";
 import BirthdayForm from "./pages/BirthdayForm";
 import { AuthProvider } from "./context/AuthContext";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AdminLogin />} />
-          <Route path="/admin" element={<BirthdayForm />} />
+          <Route path="/" element={<Home />} />
+
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin-form" element={<BirthdayForm />} />
           <Route path="/invitation/:id" element={<BirthdayInvitation />} />
         </Routes>
       </BrowserRouter>

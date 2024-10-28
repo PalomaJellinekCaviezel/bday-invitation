@@ -17,7 +17,7 @@ const AdminLogin = ({ onLoginSuccess }) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         handleLoginSuccess();
-        navigate("/admin"); // Redirige a la ruta del formulario admin
+        navigate("/admin-form"); // Redirige a la ruta del formulario admin
       })
       .catch((error) => {
         console.error("Error de autenticación:", error);

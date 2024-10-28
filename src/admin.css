@@ -12,6 +12,10 @@
     background-color: #fafafa;
 }
 
+.admin-login form {
+    max-width: 400px;
+}
+
 form {
     background-color: #fff;
     padding: 1.2rem;
@@ -57,7 +61,20 @@ label {
 }
 
 form div{
+    padding-right: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.home strong {
+    color: #007bff;
 }
